@@ -1,0 +1,24 @@
+B14:
+
+Câu hỏi: Hãy thử thêm phương pháp addDigitalVideoDisc cho phép truyền một số lượng đối số tùy ý cho DVD (thay vì dùng tham số mảng). Bạn ưu tiên cách nào hơn trong trường hợp này?
+
+Trả lời:
+Tôi ưu tiên cách tiếp cận Varargs (DigitalVideoDisc... dvd) vì nó mang lại tính linh hoạt cao hơn và cú pháp sạch sẽ hơn cho mã nguồn phía người dùng (client code). Cách này cho phép truyền trực tiếp nhiều đối tượng mà không cần phải khởi tạo mảng một cách thủ công, trong khi vẫn giữ nguyên được logic của phương thức.
+
+B15.1:
+
+Câu hỏi: Sau khi gọi hàm swap(jungleDVD, cinderellaDVD), tại sao tiêu đề (title) của hai đối tượng này vẫn giữ nguyên?
+
+Trả lời:
+Tiêu đề không thay đổi vì phương thức swap chỉ thực hiện gán lại các bản sao cục bộ của các biến tham chiếu. Điều này khiến cho các tham chiếu gốc trong phạm vi hàm gọi (caller's scope) hoàn toàn không bị ảnh hưởng.
+
+B15.2:
+
+Câu hỏi: Sau khi gọi hàm changeTitle(jungleDVD, cinderellaDVD.getTitle()), tại sao tiêu đề của JungleDVD lại bị thay đổi?
+
+Trả lời:
+Khác với phương thức swap (vốn chỉ cố gắng hoán đổi "nhãn dán"), changeTitle sử dụng một phương thức setter để sửa đổi nội dung thực tế của đối tượng được chia sẻ trong bộ nhớ. Vì cả hai tham chiếu đều trỏ đến cùng một đối tượng, nên những thay đổi đối với trạng thái của đối tượng thông qua các phương thức biến đổi (mutator methods/setters) sẽ được phản ánh trên toàn hệ thống.
+
+Kết luận quan trọng:
+
+Java luôn là ngôn ngữ lập trình truyền tham trị (Pass-by-value).
