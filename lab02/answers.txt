@@ -1,0 +1,21 @@
+Section 14: 
+Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compared to an array parameter. What do you prefer in this case? 
+
+Ans: 
+I prefer the Varargs approach (DigitalVideoDisc... dvds) because it provides greater flexibility and cleaner syntax for the client code, allowing multiple objects to be passed directly without explicit array instantiation while maintaining the integrity of the method's logic.
+
+Section 15.1:
+After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
+objects still remain? 
+
+Ans: 
+The titles do not change because the swap method only reassigns local copies of the references, leaving the original references in the caller's scope untouched.
+
+Section 15.2:
+After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is 
+the title of the JungleDVD changed? 
+
+Ans: 
+Unlike the swap method which only tried to switch "labels," changeTitle uses a setter method to modify the actual content of the shared object in memory. Since both references point to the same object, changes to the object's state via mutator methods (setters) are reflected globally.
+
+-> JAVA is always a pass by value programming language. 
