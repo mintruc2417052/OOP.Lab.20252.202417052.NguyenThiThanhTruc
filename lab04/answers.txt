@@ -1,0 +1,71 @@
+B 1.3:
+
+1. So sánh Top-level Containers
+
+AWT:
+Các container cấp cao trong AWT gồm có Frame, Dialog, Window và Applet.
+Khi sử dụng AWT, các component có thể được thêm trực tiếp vào Frame bằng phương thức add().
+
+Swing:
+Trong Swing, các container tương ứng là JFrame, JDialog, JWindow và JApplet.
+
+Điểm khác nhau:
+Với Swing (đặc biệt ở các phiên bản Java cũ), component thường không được thêm trực tiếp vào JFrame. Thay vào đó, chúng sẽ được thêm thông qua một lớp trung gian gọi là Content Pane. Vì vậy trong chương trình Swing thường xuất hiện câu lệnh:
+
+Container cp = getContentPane();
+
+sau đó mới sử dụng:
+
+cp.add(...);
+
+để đưa component vào giao diện.
+
+2. So sánh tên lớp của các thành phần (Components)
+
+Đây là điểm khác biệt dễ thấy nhất khi quan sát mã nguồn.
+
+AWT:
+Các component trong AWT có tên đơn giản và ngắn gọn như: Button, Label, TextField, TextArea, List, Checkbox.
+
+Swing:
+Các component của Swing thường được thêm tiền tố "J" để phân biệt với AWT, ví dụ: JButton, JLabel, JTextField, JTextArea, JList, JCheckBox.
+
+Bản chất khác nhau:
+
+Các component của AWT được xem là Heavyweight vì chúng phụ thuộc vào thành phần giao diện do hệ điều hành cung cấp.
+Trong khi đó, các component của Swing là Lightweight vì giao diện của chúng được xây dựng và vẽ hoàn toàn bằng Java.
+
+3. So sánh việc xử lý sự kiện (Event-handling)
+
+Điểm giống nhau:
+Cả AWT và Swing đều sử dụng mô hình xử lý sự kiện mang tên Delegation Event Model. Hai thư viện này cùng dùng các interface trong gói java.awt.event như ActionListener, MouseListener, WindowListener,...
+
+Điểm khác nhau:
+
+Swing hỗ trợ nhiều loại sự kiện nâng cao hơn so với AWT.
+Ví dụ:
+DocumentEvent dùng để theo dõi sự thay đổi của từng ký tự trong ô nhập liệu.
+Ngoài ra còn có các sự kiện chuyên biệt cho JTable, JTree,...
+
+Về luồng xử lý (Threading):
+Swing là thư viện không thread-safe, vì vậy các thao tác cập nhật giao diện nên được thực hiện trên luồng riêng gọi là Event Dispatch Thread (EDT) nhằm tránh lỗi hoặc xung đột dữ liệu.
+
+Trong khi đó, AWT có cơ chế xử lý đơn giản hơn, nhưng lại dễ khiến chương trình bị treo hoặc phản hồi chậm khi xử lý giao diện.
+
+4. So sánh về ngoại hình (Appearances)
+
+AWT (Platform-dependent):
+Giao diện của ứng dụng AWT phụ thuộc vào hệ điều hành đang sử dụng.
+Ví dụ:
+
+Chạy trên Windows thì giao diện sẽ mang phong cách Windows.
+Chạy trên macOS thì sẽ hiển thị theo kiểu của Mac.
+
+Cách hoạt động này giúp ứng dụng hòa hợp với hệ điều hành, nhưng đôi khi có thể làm bố cục giao diện bị thay đổi hoặc lệch khi chạy trên các nền tảng khác nhau.
+
+Swing (Platform-independent):
+Swing hỗ trợ cơ chế Pluggable Look and Feel, cho phép lập trình viên tùy chọn giao diện mà không phụ thuộc vào hệ điều hành. Vì vậy, ứng dụng có thể giữ nguyên hình thức hiển thị trên nhiều nền tảng khác nhau.
+
+Ngoài ra, Swing còn hỗ trợ nhiều khả năng đồ họa nâng cao hơn AWT như:
+
+bo góc, đổ bóng, sử dụng icon, hiệu ứng trong suốt và nhiều tùy biến giao diện khác.
