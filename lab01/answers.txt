@@ -1,0 +1,9 @@
+//Bai 6.1
+
+1. Nếu người dùng chọn "Cancel" thì sao?
+
+→ JOptionPane sẽ trả về giá trị CANCEL_OPTION (khác YES/NO)
+
+2. Làm sao tùy chỉnh nút (ví dụ “I do” / “I don’t”)?
+
+→ Dùng JOptionPane.showOptionDialog(...)
